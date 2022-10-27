@@ -1,4 +1,4 @@
-# Find and Replace in Text Timeline FX
+# Go To Frame Number
 
 Plugin for Autodesk Flame software.
 
