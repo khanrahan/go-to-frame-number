@@ -12,3 +12,6 @@ For specific users, copy to `/opt/Autodesk/user/<user name>/python`
 ## Menus
  - Right-click selected clips and/or sequences on the Desktop -> Navigate... -> Go to Frame Number
  - Right-click selected clips and/or sequences in the Media Panel -> Navigate... -> Go to Frame Number
+
+## Acknowledgments
+UI Templates from [Logik-Portal/qt-snippets](https://github.com/logik-portal/qt_snippets)
