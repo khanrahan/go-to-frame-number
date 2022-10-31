@@ -534,7 +534,6 @@ class FlameSlider(QtWidgets.QLineEdit):
         super(FlameSlider, self).mouseReleaseEvent(event)
 
     def mouseMoveEvent(self, event):
-
         if event.buttons() != QtCore.Qt.LeftButton:
             return
 
@@ -544,10 +543,8 @@ class FlameSlider(QtWidgets.QLineEdit):
         steps_mult = self.getStepsMultiplier(event)
         delta = event.pos().x() - self.pos_at_press.x()
 
-        if self.spinbox_type == 'Interger':
-            delta /= 10  # Make movement less sensiteve.
-        else:
-            delta /= 100
+        if self.spinbox_type == 'Float':
+            delta /= 100  # adjust sensitivity
         delta *= self.steps * steps_mult
 
         value = self.value_at_press + delta
