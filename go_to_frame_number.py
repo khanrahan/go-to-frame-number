@@ -34,7 +34,7 @@ from __future__ import print_function
 from PySide2 import QtWidgets, QtCore, QtGui
 
 __title__ = "Go to Frame Number"
-__version_info__ = (0, 2, 0)
+__version_info__ = (0, 2, 1)
 __version__ = ".".join([str(num) for num in __version_info__])
 __title_version__ = "{} v{}".format(__title__, __version__)
 
@@ -667,6 +667,7 @@ class GoToFrameNumber(object):
         # Buttons
         self.ok_btn = FlameButton('Ok', okay_button, self.window)
         self.ok_btn.setStyleSheet('background: #732020')
+        self.ok_btn.setShortcut('Return')
 
         self.cancel_btn = FlameButton("Cancel", self.window.close, self.window)
 
