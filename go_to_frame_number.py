@@ -34,7 +34,7 @@ from __future__ import print_function
 from PySide2 import QtWidgets, QtCore, QtGui
 
 __title__ = "Go to Frame Number"
-__version_info__ = (0, 3, 1)
+__version_info__ = (0, 4, 1)
 __version__ = ".".join([str(num) for num in __version_info__])
 __title_version__ = "{} v{}".format(__title__, __version__)
 
@@ -648,6 +648,7 @@ class GoToFrameNumber(object):
 
             self.go_to_frame()
             self.window.close()
+            self.message("Done!")
 
         self.window = QtWidgets.QWidget()
         self.window.setMinimumSize(self.window_size["x"], self.window_size["y"])
