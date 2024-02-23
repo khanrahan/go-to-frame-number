@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 """
 Go to Frame Number
 
