@@ -618,7 +618,6 @@ class GoToFrameNumber(object):
     @staticmethod
     def message(string):
         """Print message to shell window and append global MESSAGE_PREFIX."""
-
         print(" ".join([MESSAGE_PREFIX, string]))
 
 
@@ -630,7 +629,6 @@ class GoToFrameNumber(object):
 
     def go_to_frame(self):
         """Loop through the selections and move position to frame on each."""
-
         import flame
 
         for clip in self.selection:
@@ -640,10 +638,8 @@ class GoToFrameNumber(object):
 
     def main_window(self):
         """The only popup window."""
-
         def okay_button():
             """Execute when ok is pressed."""
-
             self.go_to_frame()
             self.window.close()
             self.message("Done!")
@@ -715,7 +711,6 @@ class GoToFrameNumber(object):
 def scope_clip(selection):
     """PyClip includes PySequences.  It is the parent, so this will be true
     for individual clips or full sequences."""
-
     import flame
 
     for item in selection:
