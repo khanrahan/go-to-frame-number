@@ -27,9 +27,10 @@ To Install:
     /opt/Autodesk/user/<user name>/python
 """
 
-
 from __future__ import print_function
-from PySide2 import QtWidgets, QtCore, QtGui
+
+import flame
+from PySide2 import QtCore, QtGui, QtWidgets
 
 __title__ = "Go to Frame Number"
 __version_info__ = (0, 4, 1)
@@ -623,14 +624,11 @@ class GoToFrameNumber(object):
 
     def get_frame_number(self):
         """ """
-
         self.frame = int(self.frame_slider.text())
 
 
     def go_to_frame(self):
         """Loop through the selections and move position to frame on each."""
-        import flame
-
         for clip in self.selection:
             clip.current_time = self.frame
             self.message("{} positioner moved to frame {}".format(clip.name.get_value(),
@@ -638,6 +636,7 @@ class GoToFrameNumber(object):
 
     def main_window(self):
         """The only popup window."""
+
         def okay_button():
             """Execute when ok is pressed."""
             self.go_to_frame()
@@ -711,8 +710,6 @@ class GoToFrameNumber(object):
 def scope_clip(selection):
     """PyClip includes PySequences.  It is the parent, so this will be true
     for individual clips or full sequences."""
-    import flame
-
     for item in selection:
         if isinstance(item, flame.PyClip):
             return True
