@@ -722,5 +722,6 @@ def get_media_panel_custom_ui_actions():
              'actions': [{'name': "Go to Frame Number",
                           'isVisible': scope_clip,
                           'execute': GoToFrameNumber,
-                          'minimumVersion': "2021.1"}]
+                          'minimumVersion': "2021.1",
+                          'maximumVersion': "2021.2"}]
             }]
