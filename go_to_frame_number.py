@@ -32,10 +32,10 @@ from __future__ import print_function
 import flame
 from PySide2 import QtCore, QtGui, QtWidgets
 
-__title__ = 'Go to Frame Number'
-__version_info__ = (1, 0, 0)
-__version__ = '.'.join([str(num) for num in __version_info__])
-__title_version__ = '{} v{}'.format(__title__, __version__)
+TITLE = 'Go to Frame Number'
+VERSION_INFO = (1, 0, 0)
+VERSION = '.'.join([str(num) for num in VERSION_INFO])
+TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
 
 MESSAGE_PREFIX = '[PYTHON]'
 
@@ -615,7 +615,7 @@ class GoToFrameNumber(object):
 
         self.frame = 1
 
-        self.message(__title_version__)
+        self.message(TITLE_VERSION)
         self.message('Script called from {}'.format(__file__))
 
         self.window_size = {'x': 360, 'y': 130}
@@ -650,7 +650,7 @@ class GoToFrameNumber(object):
         self.window = QtWidgets.QWidget()
         self.window.setMinimumSize(self.window_size['x'], self.window_size['y'])
         self.window.setStyleSheet('background-color: #272727')
-        self.window.setWindowTitle(__title_version__)
+        self.window.setWindowTitle(TITLE_VERSION)
 
         # FlameLineEdit class needs this
         self.window.setFocusPolicy(QtCore.Qt.StrongFocus)
