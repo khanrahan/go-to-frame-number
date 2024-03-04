@@ -4,6 +4,8 @@ Plugin for [Autodesk Flame](http://www.autodesk.com/products/flame)
 
 Move the positioner to specified frame for selected clips and/or sequences.
 
+![screenshot](screenshot.png)
+
 ## Installation
 To make available to all users on the workstation, copy `go_to_frame_number.py` to `/opt/Autodesk/shared/python`
 
