@@ -675,7 +675,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             self.setText('%.2f' % float(value))
 
 
-class GoToFrameNumber(object):
+class GoToFrameNumber:
     """For moving the positioner to a frame number on a selection of timelines.
 
     Attributes:
