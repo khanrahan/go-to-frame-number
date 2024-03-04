@@ -1,9 +1,14 @@
 """
-Go to Frame Number
+Script Name: Go to Frame Number
+Written By: Kieran Hanrahan
 
-URL:
+Script Version: 2.0.1
+Flame Version: 2022
 
-    http://github.com/khanrahan/go-to-frame-number
+URL: http://github.com/khanrahan/go-to-frame-number
+
+Creation Date: 10.26.22
+Update Date: 03.04.24
 
 Description:
 
@@ -33,7 +38,7 @@ import flame
 from PySide2 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Go to Frame Number'
-VERSION_INFO = (2, 0, 0)
+VERSION_INFO = (2, 0, 1)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
 
