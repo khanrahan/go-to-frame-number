@@ -746,15 +746,12 @@ class GoToFrameNumber:
         self.cancel_btn = FlameButton('Cancel', self.window.close)
 
         # Shortcuts
-        self.shortcut_enter = QtWidgets.QShortcut(QtGui.QKeySequence('Enter'),
-                              self.ok_btn,
-                              okay_button)
-        self.shortcut_escape = QtWidgets.QShortcut(QtGui.QKeySequence('Escape'),
-                               self.cancel_btn,
-                               self.window.close)
-        self.shortcut_return = QtWidgets.QShortcut(QtGui.QKeySequence('Return'),
-                               self.ok_btn,
-                               okay_button)
+        self.shortcut_enter = QtWidgets.QShortcut(
+                QtGui.QKeySequence('Enter'), self.ok_btn, okay_button)
+        self.shortcut_escape = QtWidgets.QShortcut(
+                QtGui.QKeySequence('Escape'), self.cancel_btn, self.window.close)
+        self.shortcut_return = QtWidgets.QShortcut(
+                QtGui.QKeySequence('Return'), self.ok_btn, okay_button)
 
         # Layout
         self.grid = QtWidgets.QGridLayout()
