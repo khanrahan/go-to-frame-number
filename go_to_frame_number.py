@@ -679,13 +679,17 @@ class GoToFrameNumber(object):
     """For moving the positioner to a frame number on a selection of timelines.
 
     Attributes:
-        selection: A list of the selected Flame PyClip or PySequence objects.
         frame: The destination frame number for the positioners stored as an integer.
+        selection: Passed along by the Flame app.
         window_size: A dictorionary of the starting X & Y dimension of the window.
     """
 
-    def __init__(self, selection, **kwargs):
+    def __init__(self, selection):
+        """Start it up!
 
+        Args:
+            selection: A list of the selected Flame PyClip or PySequence objects.
+        """
         self.selection = selection
 
         self.frame = 1
