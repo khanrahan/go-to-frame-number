@@ -695,7 +695,7 @@ class GoToFrameNumber(object):
         self.frame = 1
 
         self.message(TITLE_VERSION)
-        self.message('Script called from {}'.format(__file__))
+        self.message(f'Script called from {__file__}')
 
         self.window_size = {'x': 360, 'y': 130}
 
@@ -710,8 +710,8 @@ class GoToFrameNumber(object):
         """Loop through the selections and move position to frame on each."""
         for clip in self.selection:
             clip.current_time = self.frame
-            self.message("{} positioner moved to frame {}".format(clip.name.get_value(),
-                                                                  self.frame))
+            self.message(f'{clip.name.get_value()} positioner moved to '
+                         f'frame {self.frame}')
 
     def main_window(self):
         """The only popup window."""
@@ -724,7 +724,7 @@ class GoToFrameNumber(object):
             """Execute when ok is pressed."""
             self.go_to_frame()
             self.window.close()
-            self.message("Done!")
+            self.message('Done!')
 
         self.window = QtWidgets.QWidget()
         self.window.setMinimumSize(self.window_size['x'], self.window_size['y'])
