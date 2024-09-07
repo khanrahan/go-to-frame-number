@@ -42,6 +42,7 @@ TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
 
 MESSAGE_PREFIX = '[PYTHON]'
 
+
 class FlameButton(QtWidgets.QPushButton):
     """
     Custom Qt Flame Button Widget v2.1
@@ -378,6 +379,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                     font: 14pt "Discreet"}
                 QLineEdit:hover {
                     border: 1px solid rgb(90, 90, 90)}""")
+
         def revert_color():
             self.setStyleSheet("""
                 QLineEdit {
