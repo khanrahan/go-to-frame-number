@@ -32,13 +32,11 @@ To Install:
     /opt/Autodesk/user/<user name>/python
 """
 
-from __future__ import print_function
-
 import flame
 from PySide2 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Go to Frame Number'
-VERSION_INFO = (2, 0, 1)
+VERSION_INFO = (2, 0, 1, 'dev')
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
 
