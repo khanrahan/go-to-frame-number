@@ -60,7 +60,7 @@ class FlameButton(QtWidgets.QPushButton):
 
     def __init__(self, button_name, connect, button_color='normal', button_width=150,
                  button_max_width=150):
-        super(FlameButton, self).__init__()
+        super().__init__()
 
         self.setText(button_name)
         self.setMinimumSize(QtCore.QSize(button_width, 28))
@@ -124,7 +124,7 @@ class FlameLabel(QtWidgets.QLabel):
     """
 
     def __init__(self, label_name, label_type='normal', label_width=150):
-        super(FlameLabel, self).__init__()
+        super().__init__()
 
         self.setText(label_name)
         self.setMinimumSize(label_width, 28)
@@ -176,7 +176,7 @@ class FlameSlider(QtWidgets.QLineEdit):
 
     def __init__(self, start_value, min_value, max_value, value_is_float=False, slider_width=110):
 
-        super(FlameSlider, self).__init__()
+        super().__init__()
         self.setAlignment(QtCore.Qt.AlignCenter)
         self.setMinimumHeight(28)
         self.setMinimumWidth(slider_width)
@@ -218,7 +218,7 @@ class FlameSlider(QtWidgets.QLineEdit):
         class Slider(QtWidgets.QSlider):
 
             def __init__(self, start_value, min_value, max_value, slider_width):
-                super(Slider, self).__init__()
+                super().__init__()
 
                 self.setMaximumHeight(4)
                 self.setMinimumWidth(slider_width)
@@ -444,7 +444,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             """Custom Qt Flame Button Widget"""
 
             def __init__(self, button_name, size_x, size_y, connect, parent, *args, **kwargs):
-                super(FlameButton, self).__init__(*args, **kwargs)
+                super().__init__(*args, **kwargs)
 
                 self.setText(button_name)
                 self.setParent(parent)
@@ -605,7 +605,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             self.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
             return
 
-        super(FlameSlider, self).mouseReleaseEvent(event)
+        super().mouseReleaseEvent(event)
 
     def mouseMoveEvent(self, event):
         if event.buttons() != QtCore.Qt.LeftButton:
@@ -624,7 +624,7 @@ class FlameSlider(QtWidgets.QLineEdit):
         value = self.value_at_press + delta
         self.setValue(value)
 
-        super(FlameSlider, self).mouseMoveEvent(event)
+        super().mouseMoveEvent(event)
 
     def getStepsMultiplier(self, event):
 
