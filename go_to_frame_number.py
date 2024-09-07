@@ -44,8 +44,7 @@ MESSAGE_PREFIX = '[PYTHON]'
 
 
 class FlameButton(QtWidgets.QPushButton):
-    """
-    Custom Qt Flame Button Widget v2.1
+    """Custom Qt Flame Button Widget v2.1
 
     button_name: button text [str]
     connect: execute when clicked [function]
@@ -112,8 +111,7 @@ class FlameButton(QtWidgets.QPushButton):
 
 
 class FlameLabel(QtWidgets.QLabel):
-    """
-    Custom Qt Flame Label Widget v2.1
+    """Custom Qt Flame Label Widget v2.1
 
     label_name:  text displayed [str]
     label_type:  (optional) select from different styles:
@@ -163,8 +161,7 @@ class FlameLabel(QtWidgets.QLabel):
 
 
 class FlameSlider(QtWidgets.QLineEdit):
-    """
-    Custom Qt Flame Slider Widget v2.1
+    """Custom Qt Flame Slider Widget v2.1
 
     start_value: int or float value
     min_value: int or float value
@@ -444,9 +441,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             pass
 
         class FlameButton(QtWidgets.QPushButton):
-            """
-            Custom Qt Flame Button Widget
-            """
+            """Custom Qt Flame Button Widget"""
 
             def __init__(self, button_name, size_x, size_y, connect, parent, *args, **kwargs):
                 super(FlameButton, self).__init__(*args, **kwargs)
