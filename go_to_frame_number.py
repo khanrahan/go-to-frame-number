@@ -38,7 +38,7 @@ from PySide2 import QtCore, QtGui, QtWidgets
 TITLE = 'Go to Frame Number'
 VERSION_INFO = (2, 0, 1, 'dev')
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
-TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
+TITLE_VERSION = f'{TITLE} v{VERSION}'
 
 MESSAGE_PREFIX = '[PYTHON]'
 
