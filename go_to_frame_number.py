@@ -2,13 +2,13 @@
 Script Name: Go to Frame Number
 Written By: Kieran Hanrahan
 
-Script Version: 2.0.1
-Flame Version: 2022
+Script Version: 3.0.0
+Flame Version: 2025
 
 URL: http://github.com/khanrahan/go-to-frame-number
 
 Creation Date: 10.26.22
-Update Date: 03.04.24
+Update Date: 03.07.25
 
 Description:
 
@@ -26,27 +26,28 @@ Menus:
 To Install:
 
     For all users, copy this file to:
-    /opt/Autodesk/shared/python
+    /opt/Autodesk/shared/python/
 
-    For a specific user, copy this file to:
-    /opt/Autodesk/user/<user name>/python
+    For a specific user on Linux, copy this file to:
+    /home/<user_name>/flame/python/
+
+    For a specific user on Mac, copy this file to:
+    /Users/<user_name>/Library/Preferences/Autodesk/flame/python/
 """
 
-from __future__ import print_function
-
 import flame
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Go to Frame Number'
-VERSION_INFO = (2, 0, 1)
+VERSION_INFO = (3, 0, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
-TITLE_VERSION = '{} v{}'.format(TITLE, VERSION)
+TITLE_VERSION = f'{TITLE} v{VERSION}'
 
 MESSAGE_PREFIX = '[PYTHON]'
 
+
 class FlameButton(QtWidgets.QPushButton):
-    '''
-    Custom Qt Flame Button Widget v2.1
+    """Custom Qt Flame Button Widget v2.1
 
     button_name: button text [str]
     connect: execute when clicked [function]
@@ -58,11 +59,11 @@ class FlameButton(QtWidgets.QPushButton):
 
         button = FlameButton(
             'Button Name', do_something__when_pressed, button_color='blue')
-    '''
+    """
 
     def __init__(self, button_name, connect, button_color='normal', button_width=150,
                  button_max_width=150):
-        super(FlameButton, self).__init__()
+        super().__init__()
 
         self.setText(button_name)
         self.setMinimumSize(QtCore.QSize(button_width, 28))
@@ -70,7 +71,7 @@ class FlameButton(QtWidgets.QPushButton):
         self.setFocusPolicy(QtCore.Qt.NoFocus)
         self.clicked.connect(connect)
         if button_color == 'normal':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QPushButton {
                     color: rgb(154, 154, 154);
                     background-color: rgb(58, 58, 58);
@@ -89,9 +90,9 @@ class FlameButton(QtWidgets.QPushButton):
                 QToolTip {
                     color: rgb(170, 170, 170);
                     background-color: rgb(71, 71, 71);
-                    border: 10px solid rgb(71, 71, 71)}''')
+                    border: 10px solid rgb(71, 71, 71)}""")
         elif button_color == 'blue':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QPushButton {
                     color: rgb(190, 190, 190);
                     background-color: rgb(0, 110, 175);
@@ -109,12 +110,11 @@ class FlameButton(QtWidgets.QPushButton):
                 QToolTip {
                     color: rgb(170, 170, 170);
                     background-color: rgb(71, 71, 71);
-                    border: 10px solid rgb(71, 71, 71)}''')
+                    border: 10px solid rgb(71, 71, 71)}""")
 
 
 class FlameLabel(QtWidgets.QLabel):
-    '''
-    Custom Qt Flame Label Widget v2.1
+    """Custom Qt Flame Label Widget v2.1
 
     label_name:  text displayed [str]
     label_type:  (optional) select from different styles:
@@ -124,10 +124,10 @@ class FlameLabel(QtWidgets.QLabel):
     Usage:
 
         label = FlameLabel('Label Name', 'normal', 300)
-    '''
+    """
 
     def __init__(self, label_name, label_type='normal', label_width=150):
-        super(FlameLabel, self).__init__()
+        super().__init__()
 
         self.setText(label_name)
         self.setMinimumSize(label_width, 28)
@@ -137,35 +137,34 @@ class FlameLabel(QtWidgets.QLabel):
         # Set label stylesheet based on label_type
 
         if label_type == 'normal':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
                     font: 14px "Discreet"}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
         elif label_type == 'underline':
             self.setAlignment(QtCore.Qt.AlignCenter)
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
                     border-bottom: 1px inset rgb(40, 40, 40);
                     font: 14px "Discreet"}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
         elif label_type == 'background':
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLabel {
                     color: rgb(154, 154, 154);
                     background-color: rgb(30, 30, 30);
                     padding-left: 5px;
                     font: 14px "Discreet"}
                 QLabel:disabled {
-                    color: rgb(106, 106, 106)}''')
+                    color: rgb(106, 106, 106)}""")
 
 
 class FlameSlider(QtWidgets.QLineEdit):
-    """
-    Custom Qt Flame Slider Widget v2.1
+    """Custom Qt Flame Slider Widget v2.1
 
     start_value: int or float value
     min_value: int or float value
@@ -180,7 +179,7 @@ class FlameSlider(QtWidgets.QLineEdit):
 
     def __init__(self, start_value, min_value, max_value, value_is_float=False, slider_width=110):
 
-        super(FlameSlider, self).__init__()
+        super().__init__()
         self.setAlignment(QtCore.Qt.AlignCenter)
         self.setMinimumHeight(28)
         self.setMinimumWidth(slider_width)
@@ -200,7 +199,7 @@ class FlameSlider(QtWidgets.QLineEdit):
         self.setReadOnly(True)
         self.textChanged.connect(self.value_changed)
         self.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.setStyleSheet('''
+        self.setStyleSheet("""
             QLineEdit {
                 color: rgb(154, 154, 154);
                 background-color: rgb(55, 65, 75);
@@ -216,13 +215,13 @@ class FlameSlider(QtWidgets.QLineEdit):
             QToolTip {
                 color: rgb(170, 170, 170);
                 background-color: rgb(71, 71, 71);
-                border: 10px solid rgb(71, 71, 71)}''')
+                border: 10px solid rgb(71, 71, 71)}""")
         self.clearFocus()
 
         class Slider(QtWidgets.QSlider):
 
             def __init__(self, start_value, min_value, max_value, slider_width):
-                super(Slider, self).__init__()
+                super().__init__()
 
                 self.setMaximumHeight(4)
                 self.setMinimumWidth(slider_width)
@@ -231,7 +230,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                 self.setMaximum(max_value)
                 self.setValue(start_value)
                 self.setOrientation(QtCore.Qt.Horizontal)
-                self.setStyleSheet('''
+                self.setStyleSheet("""
                     QSlider {
                         color: rgb(55, 65, 75);
                         background-color: rgb(39, 45, 53)}
@@ -243,7 +242,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                         width: 3px}'
                     QSlider::disabled {
                         color: rgb(106, 106, 106);
-                        background-color: rgb(55, 65, 75)}''')
+                        background-color: rgb(55, 65, 75)}""")
                 self.setDisabled(True)
                 self.raise_()
 
@@ -265,7 +264,7 @@ class FlameSlider(QtWidgets.QLineEdit):
 
         def button_press(key):
 
-            if self.clean_line == True:
+            if self.clean_line:
                 calc_lineedit.setText('')
 
             calc_lineedit.insert(key)
@@ -303,7 +302,7 @@ class FlameSlider(QtWidgets.QLineEdit):
 
         def enter():
 
-            if self.clean_line == True:
+            if self.clean_line:
                 return calc_window.close()
 
             if calc_lineedit.text():
@@ -369,7 +368,7 @@ class FlameSlider(QtWidgets.QLineEdit):
 
         def close_calc():
             calc_window.close()
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLineEdit {
                     color: rgb(154, 154, 154);
                     background-color: rgb(55, 65, 75);
@@ -379,9 +378,10 @@ class FlameSlider(QtWidgets.QLineEdit):
                     padding-left: 5px;
                     font: 14pt "Discreet"}
                 QLineEdit:hover {
-                    border: 1px solid rgb(90, 90, 90)}''')
+                    border: 1px solid rgb(90, 90, 90)}""")
+
         def revert_color():
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLineEdit {
                     color: rgb(154, 154, 154);
                     background-color: rgb(55, 65, 75);
@@ -391,7 +391,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                     padding-left: 5px;
                     font: 14pt "Discreet"}
                 QLineEdit:hover {8
-                    border: 1px solid rgb(90, 90, 90)}''')
+                    border: 1px solid rgb(90, 90, 90)}""")
         calc_version = '1.2'
         self.clean_line = False
 
@@ -421,7 +421,7 @@ class FlameSlider(QtWidgets.QLineEdit):
         calc_lineedit.setMinimumHeight(28)
         calc_lineedit.setFocus()
         calc_lineedit.returnPressed.connect(enter)
-        calc_lineedit.setStyleSheet('''
+        calc_lineedit.setStyleSheet("""
             QLineEdit {
                 color: rgb(154, 154, 154);
                 background-color: rgb(55, 65, 75);
@@ -429,12 +429,12 @@ class FlameSlider(QtWidgets.QLineEdit):
                 selection-background-color: rgb(184, 177, 167);
                 border: none;
                 padding-left: 5px;
-                font: 14px "Discreet"}''')
+                font: 14px "Discreet"}""")
 
         # Limit characters that can be entered into lineedit
 
-        regex = QtCore.QRegExp('[0-9_,=,/,*,+,\-,.]+')
-        validator = QtGui.QRegExpValidator(regex)
+        regex = QtCore.QRegularExpression('[0-9_,=,/,*,+,\-,.]+')
+        validator = QtGui.QRegularExpressionValidator(regex)
         calc_lineedit.setValidator(validator)
 
         # Buttons
@@ -444,12 +444,10 @@ class FlameSlider(QtWidgets.QLineEdit):
             pass
 
         class FlameButton(QtWidgets.QPushButton):
-            """
-            Custom Qt Flame Button Widget
-            """
+            """Custom Qt Flame Button Widget"""
 
             def __init__(self, button_name, size_x, size_y, connect, parent, *args, **kwargs):
-                super(FlameButton, self).__init__(*args, **kwargs)
+                super().__init__(*args, **kwargs)
 
                 self.setText(button_name)
                 self.setParent(parent)
@@ -457,7 +455,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                 self.setMaximumSize(size_x, size_y)
                 self.setFocusPolicy(QtCore.Qt.NoFocus)
                 self.clicked.connect(connect)
-                self.setStyleSheet('''
+                self.setStyleSheet("""
                     QPushButton {
                         color: rgb(154, 154, 154);
                         background-color: rgb(58, 58, 58);
@@ -472,7 +470,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                     QPushButton:disabled {
                         color: rgb(116, 116, 116);
                         background-color: rgb(58, 58, 58);
-                        border: none}''')
+                        border: none}""")
 
         blank_btn = FlameButton('', 40, 28, calc_null, calc_window)
         blank_btn.setDisabled(True)
@@ -572,7 +570,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             self.value_at_press = self.value()
             self.pos_at_press = event.pos()
             self.setCursor(QtGui.QCursor(QtCore.Qt.SizeHorCursor))
-            self.setStyleSheet('''
+            self.setStyleSheet("""
                 QLineEdit {
                     color: rgb(217, 217, 217);
                     background-color: rgb(73, 86, 99);
@@ -582,7 +580,7 @@ class FlameSlider(QtWidgets.QLineEdit):
                     padding-left: 5px;
                     font: 14pt "Discreet"}
                 QLineEdit:hover {
-                    border: 1px solid rgb(90, 90, 90)}''')
+                    border: 1px solid rgb(90, 90, 90)}""")
 
     def mouseReleaseEvent(self, event):
 
@@ -593,7 +591,7 @@ class FlameSlider(QtWidgets.QLineEdit):
             if event.pos().x() in range((self.pos_at_press.x() - 10), (self.pos_at_press.x() + 10)) and event.pos().y() in range((self.pos_at_press.y() - 10), (self.pos_at_press.y() + 10)):
                 self.calculator()
             else:
-                self.setStyleSheet('''
+                self.setStyleSheet("""
                     QLineEdit {
                         color: rgb(154, 154, 154);
                         background-color: rgb(55, 65, 75);
@@ -603,14 +601,14 @@ class FlameSlider(QtWidgets.QLineEdit):
                         padding-left: 5px;
                         font: 14pt "Discreet"}
                     QLineEdit:hover {
-                        border: 1px solid rgb(90, 90, 90)}''')
+                        border: 1px solid rgb(90, 90, 90)}""")
 
             self.value_at_press = None
             self.pos_at_press = None
             self.setCursor(QtGui.QCursor(QtCore.Qt.IBeamCursor))
             return
 
-        super(FlameSlider, self).mouseReleaseEvent(event)
+        super().mouseReleaseEvent(event)
 
     def mouseMoveEvent(self, event):
         if event.buttons() != QtCore.Qt.LeftButton:
@@ -629,7 +627,7 @@ class FlameSlider(QtWidgets.QLineEdit):
         value = self.value_at_press + delta
         self.setValue(value)
 
-        super(FlameSlider, self).mouseMoveEvent(event)
+        super().mouseMoveEvent(event)
 
     def getStepsMultiplier(self, event):
 
@@ -709,7 +707,7 @@ class GoToFrameNumber:
     @staticmethod
     def message(string):
         """Print message to shell window and append global MESSAGE_PREFIX."""
-        print(" ".join([MESSAGE_PREFIX, string]))
+        print(' '.join([MESSAGE_PREFIX, string]))
 
     def go_to_frame(self):
         """Loop through the selections and move position to frame on each."""
@@ -751,11 +749,11 @@ class GoToFrameNumber:
         self.cancel_btn = FlameButton('Cancel', self.window.close)
 
         # Shortcuts
-        self.shortcut_enter = QtWidgets.QShortcut(
+        self.shortcut_enter = QtGui.QShortcut(
                 QtGui.QKeySequence('Enter'), self.ok_btn, okay_button)
-        self.shortcut_escape = QtWidgets.QShortcut(
+        self.shortcut_escape = QtGui.QShortcut(
                 QtGui.QKeySequence('Escape'), self.cancel_btn, self.window.close)
-        self.shortcut_return = QtWidgets.QShortcut(
+        self.shortcut_return = QtGui.QShortcut(
                 QtGui.QKeySequence('Return'), self.ok_btn, okay_button)
 
         # Layout
@@ -772,15 +770,15 @@ class GoToFrameNumber:
         self.hbox03.addWidget(self.ok_btn)
 
         self.vbox = QtWidgets.QVBoxLayout()
-        self.vbox.setMargin(20)
+        self.vbox.setContentsMargins(20, 20, 20, 20)
         self.vbox.addLayout(self.grid)
-        self.vbox.insertSpacing(2, 20)
+        self.vbox.addSpacing(20)
         self.vbox.addLayout(self.hbox03)
 
         self.window.setLayout(self.vbox)
 
         # Center Window
-        resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        resolution = QtGui.QGuiApplication.primaryScreen().screenGeometry()
 
         self.window.move(resolution.center().x() - self.window_size['x'] / 2,
                          resolution.center().y() - self.window_size['y'] / 2)
@@ -805,6 +803,6 @@ def get_media_panel_custom_ui_actions():
              'actions': [{'name': 'Go to Frame Number',
                           'isVisible': scope_clip,
                           'execute': GoToFrameNumber,
-                          'minimumVersion': '2022',
-                          'maximumVersion': '2024.9'}]
+                          'minimumVersion': '2025.0.0.0',
+                        }]
             }]
