@@ -8,7 +8,7 @@ Flame Version: 2025
 URL: http://github.com/khanrahan/go-to-frame-number
 
 Creation Date: 10.26.22
-Update Date: 03.04.24
+Update Date: 03.07.25
 
 Description:
 
