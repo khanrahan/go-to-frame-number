@@ -2,7 +2,7 @@
 Script Name: Go to Frame Number
 Written By: Kieran Hanrahan
 
-Script Version: 2.0.1
+Script Version: 3.0.0
 Flame Version: 2022
 
 URL: http://github.com/khanrahan/go-to-frame-number
@@ -36,7 +36,7 @@ import flame
 from PySide6 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Go to Frame Number'
-VERSION_INFO = (2, 0, 1, 'dev')
+VERSION_INFO = (3, 0, 0)
 VERSION = '.'.join([str(num) for num in VERSION_INFO])
 TITLE_VERSION = f'{TITLE} v{VERSION}'
 
