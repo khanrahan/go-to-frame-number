@@ -3,7 +3,7 @@ Script Name: Go to Frame Number
 Written By: Kieran Hanrahan
 
 Script Version: 3.0.0
-Flame Version: 2022
+Flame Version: 2025
 
 URL: http://github.com/khanrahan/go-to-frame-number
 
@@ -800,6 +800,6 @@ def get_media_panel_custom_ui_actions():
              'actions': [{'name': 'Go to Frame Number',
                           'isVisible': scope_clip,
                           'execute': GoToFrameNumber,
-                          'minimumVersion': '2025',
+                          'minimumVersion': '2025.0.0.0',
                         }]
             }]
