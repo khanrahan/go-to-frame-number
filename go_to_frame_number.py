@@ -33,7 +33,7 @@ To Install:
 """
 
 import flame
-from PySide2 import QtCore, QtGui, QtWidgets
+from PySide6 import QtCore, QtGui, QtWidgets
 
 TITLE = 'Go to Frame Number'
 VERSION_INFO = (2, 0, 1, 'dev')
@@ -430,8 +430,8 @@ class FlameSlider(QtWidgets.QLineEdit):
 
         # Limit characters that can be entered into lineedit
 
-        regex = QtCore.QRegExp('[0-9_,=,/,*,+,\-,.]+')
-        validator = QtGui.QRegExpValidator(regex)
+        regex = QtCore.QRegularExpression('[0-9_,=,/,*,+,\-,.]+')
+        validator = QtGui.QRegularExpressionValidator(regex)
         calc_lineedit.setValidator(validator)
 
         # Buttons
@@ -746,11 +746,11 @@ class GoToFrameNumber:
         self.cancel_btn = FlameButton('Cancel', self.window.close)
 
         # Shortcuts
-        self.shortcut_enter = QtWidgets.QShortcut(
+        self.shortcut_enter = QtGui.QShortcut(
                 QtGui.QKeySequence('Enter'), self.ok_btn, okay_button)
-        self.shortcut_escape = QtWidgets.QShortcut(
+        self.shortcut_escape = QtGui.QShortcut(
                 QtGui.QKeySequence('Escape'), self.cancel_btn, self.window.close)
-        self.shortcut_return = QtWidgets.QShortcut(
+        self.shortcut_return = QtGui.QShortcut(
                 QtGui.QKeySequence('Return'), self.ok_btn, okay_button)
 
         # Layout
@@ -767,7 +767,7 @@ class GoToFrameNumber:
         self.hbox03.addWidget(self.ok_btn)
 
         self.vbox = QtWidgets.QVBoxLayout()
-        self.vbox.setMargin(20)
+        self.vbox.setContentsMargins(20, 20, 20, 20)
         self.vbox.addLayout(self.grid)
         self.vbox.insertSpacing(2, 20)
         self.vbox.addLayout(self.hbox03)
@@ -775,7 +775,7 @@ class GoToFrameNumber:
         self.window.setLayout(self.vbox)
 
         # Center Window
-        resolution = QtWidgets.QDesktopWidget().screenGeometry()
+        resolution = QtGui.QGuiApplication.primaryScreen().screenGeometry()
 
         self.window.move(resolution.center().x() - self.window_size['x'] / 2,
                          resolution.center().y() - self.window_size['y'] / 2)
@@ -800,6 +800,6 @@ def get_media_panel_custom_ui_actions():
              'actions': [{'name': 'Go to Frame Number',
                           'isVisible': scope_clip,
                           'execute': GoToFrameNumber,
-                          'minimumVersion': '2022',
-                          'maximumVersion': '2024.9'}]
+                          'minimumVersion': '2025',
+                        }]
             }]
