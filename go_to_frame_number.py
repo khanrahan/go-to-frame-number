@@ -769,7 +769,7 @@ class GoToFrameNumber:
         self.vbox = QtWidgets.QVBoxLayout()
         self.vbox.setContentsMargins(20, 20, 20, 20)
         self.vbox.addLayout(self.grid)
-        self.vbox.insertSpacing(2, 20)
+        self.vbox.addSpacing(20)
         self.vbox.addLayout(self.hbox03)
 
         self.window.setLayout(self.vbox)
