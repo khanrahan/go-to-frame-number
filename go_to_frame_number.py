@@ -729,6 +729,11 @@ class GoToFrameNumber:
             self.window.close()
             self.message('Done!')
 
+        def cancel_button():
+            """Execute when cancel is pressed."""
+            self.window.close()
+            self.message('Cancelled!')
+
         self.window = QtWidgets.QWidget()
         self.window.setMinimumSize(self.window_size['x'], self.window_size['y'])
         self.window.setStyleSheet('background-color: #272727')
@@ -746,13 +751,13 @@ class GoToFrameNumber:
 
         # Buttons
         self.ok_btn = FlameButton('Ok', okay_button, button_color='blue')
-        self.cancel_btn = FlameButton('Cancel', self.window.close)
+        self.cancel_btn = FlameButton('Cancel', cancel_button)
 
         # Shortcuts
         self.shortcut_enter = QtGui.QShortcut(
                 QtGui.QKeySequence('Enter'), self.ok_btn, okay_button)
         self.shortcut_escape = QtGui.QShortcut(
-                QtGui.QKeySequence('Escape'), self.cancel_btn, self.window.close)
+                QtGui.QKeySequence('Escape'), self.cancel_btn, cancel_button)
         self.shortcut_return = QtGui.QShortcut(
                 QtGui.QKeySequence('Return'), self.ok_btn, okay_button)
 
